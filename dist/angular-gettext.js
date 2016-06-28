@@ -661,7 +661,7 @@ angular.module("gettext").factory("gettextPlurals", function () {
             case "sr":  // Serbian
             case "uk":  // Ukrainian
                 // 3 forms
-                return (n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);
+                return (n==1 ? 0 : n%10==1 && n%100!=11 ? 1 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 2 : 3);
             case "mnk": // Mandinka
                 // 3 forms
                 return (n==0 ? 0 : n==1 ? 1 : 2);
