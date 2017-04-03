@@ -21,6 +21,13 @@ describe("Catalog", function () {
         assert.equal(catalog.getString("Hello"), "Hallo");
     });
 
+    it("Can set and retrieve strings when default plural is not zero", function () {
+        var strings = { Hello: "Hallo" };
+        catalog.setStrings("ar", strings);
+        catalog.setCurrentLanguage("ar");
+        assert.equal(catalog.getString("Hello"), "Hallo");
+    });
+
     it("Should return original for unknown strings", function () {
         var strings = { Hello: "Hallo" };
         catalog.setStrings("nl", strings);
@@ -162,5 +169,13 @@ describe("Catalog", function () {
         catalog.setCurrentLanguage("en_GB");
         assert.equal(catalog.getString("Bye"), "Bye");
         assert.equal(catalog.getString("Baggage"), "Luggage");
+    });
+
+    it("Should handle multiple context when loaded from separate files", function () {
+        catalog.setStrings("en", { "Multibillion-Dollar": { rich: "nothing" } });
+        catalog.setStrings("en", { "Multibillion-Dollar": { poor: "dream" } });
+        catalog.setCurrentLanguage("en");
+        assert.equal(catalog.getString("Multibillion-Dollar", null, "rich"), "nothing");
+        assert.equal(catalog.getString("Multibillion-Dollar", null, "poor"), "dream");
     });
 });
