@@ -649,19 +649,19 @@ angular.module("gettext").factory("gettextPlurals", function () {
                 // 2 forms
                 return n>1 ? 1 : 0;
             case "lv":  // Latvian
-                // 3 forms
-                return (n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : 2);
+                // 4 forms
+                return (n==1 ? 0 : n%10==1 && n%100!=11 ? 1 : n != 0 ? 2 : 3);
             case "lt":  // Lithuanian
-                // 3 forms
-                return (n%10==1 && n%100!=11 ? 0 : n%10>=2 && (n%100<10 || n%100>=20) ? 1 : 2);
+                // 4 forms
+                return (n==1 ? 0 : n%10==1 && n%100!=11 ? 1 : n%10>=2 && (n%100<10 || n%100>=20) ? 2 : 3);
             case "be":  // Belarusian
             case "bs":  // Bosnian
             case "hr":  // Croatian
             case "ru":  // Russian
             case "sr":  // Serbian
             case "uk":  // Ukrainian
-                // 3 forms
-                return (n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);
+                // 4 forms
+                return (n==1 ? 0 : n%10==1 && n%100!=11 ? 1 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 2 : 3);
             case "mnk": // Mandinka
                 // 3 forms
                 return (n==0 ? 0 : n==1 ? 1 : 2);
